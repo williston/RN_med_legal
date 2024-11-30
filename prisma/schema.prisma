@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model FormData {
+  id          String               @id
+  formData    String
+  template    Int
+  filename    String?
+  submissions UserFormSubmission[]
+}
+
+model UserFormSubmission {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  userName  String   @map("user_name")
+  userEmail String   @map("user_email")
+  formId    String   @map("form_id")
+  filename  String?
+  createdAt DateTime @default(now()) @map("created_at")
+  formData  FormData @relation(fields: [formId], references: [id])
+
+  @@index([userId])
+}
