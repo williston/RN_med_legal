@@ -19,13 +19,13 @@ export default function FormsClient({ submissions }: { submissions: Submission[]
           <div key={submission.id} className="relative">
             <Link 
               href={`/populated-form/${submission.formId}`}
-              className="block transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-300 rounded-lg"
+              className="block transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-md"
             >
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white p-6 rounded-md border border-gray-200 shadow-sm hover:border-blue-300">
                 <div className="flex flex-col space-y-4">
-                  <div className="flex items-center space-x-2 text-teal-600">
+                  <div className="flex items-center space-x-2 text-blue-700">
                     <FileText className="w-5 h-5" />
-                    <h2 className="text-xl font-semibold">{submission.filename}</h2>
+                    <h2 className="text-lg font-semibold">{submission.filename}</h2>
                   </div>
                   <div className="space-y-2 text-gray-600">
                     <p className="text-sm flex items-center space-x-2">
@@ -37,8 +37,8 @@ export default function FormsClient({ submissions }: { submissions: Submission[]
                       <span>{format(new Date(submission.createdAt), 'pp')}</span>
                     </p>
                   </div>
-                  <p className="text-sm text-gray-500 italic">
-                    Submitted {formatDistance(new Date(submission.createdAt), new Date(), { addSuffix: true })}
+                  <p className="text-sm text-gray-500">
+                    Created {formatDistance(new Date(submission.createdAt), new Date(), { addSuffix: true })}
                   </p>
                 </div>
               </div>
@@ -46,7 +46,7 @@ export default function FormsClient({ submissions }: { submissions: Submission[]
             <button
               onClick={async (e) => {
                 e.preventDefault();
-                if (confirm('Are you sure you want to delete this submission?')) {
+                if (confirm('Are you sure you want to delete this legal document?')) {
                   try {
                     const response = await fetch(`/api/delete-form/${submission.id}`, {
                       method: 'DELETE',
@@ -61,7 +61,7 @@ export default function FormsClient({ submissions }: { submissions: Submission[]
                   }
                 }
               }}
-              className="absolute top-2 right-2 p-2 text-red-500 hover:text-red-700 transition-colors"
+              className="absolute top-2 right-2 p-2 text-gray-400 hover:text-red-600 transition-colors"
             >
               <Trash2 className="w-5 h-5" />
             </button>
@@ -70,10 +70,10 @@ export default function FormsClient({ submissions }: { submissions: Submission[]
       </div>
       
       {submissions.length === 0 && (
-        <div className="bg-white p-8 rounded-lg shadow-md text-center animate-fade-in-up">
-          <p className="text-xl text-gray-500">No forms submitted yet.</p>
-          <Link href="/" className="mt-4 inline-block px-6 py-3 bg-gradient-to-r from-teal-400 to-blue-500 text-white rounded-full hover:from-teal-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-300">
-            Create Your First Form
+        <div className="bg-white p-8 rounded-md border border-gray-200 shadow-sm text-center">
+          <p className="text-lg text-gray-600">No legal documents created yet.</p>
+          <Link href="/" className="mt-4 inline-block px-6 py-3 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300">
+            Create New Document
           </Link>
         </div>
       )}

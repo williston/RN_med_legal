@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Caveat, Fredoka } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { 
   Clock, 
   Shield, 
@@ -14,27 +14,26 @@ import { SignInButton } from "@clerk/nextjs"
 import Image from 'next/image'
 import nursingimage from '../../public/images/nursingimage.png'
 
-const caveat = Caveat({ subsets: ['latin'] })
-const fredoka = Fredoka({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Landing() {
   const [email, setEmail] = useState('')
   const router = useRouter()
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-blue-50 to-teal-50 ${fredoka.className}`}>
+    <div className={`min-h-screen bg-slate-50 ${inter.className}`}>
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-20 pb-32">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <h1 className="text-5xl md:text-6xl font-bold text-teal-700 leading-tight">
-              Master Your 
-              <span className={`block ${caveat.className} text-blue-600`}>
-                SBAR Communication
+            <h1 className="text-4xl font-bold text-gray-900 leading-tight">
+              Professional Legal Documentation
+              <span className="block text-blue-700">
+                for Healthcare Providers
               </span>
             </h1>
             <p className="text-xl text-gray-600">
-              Practice and perfect your clinical handoffs with our AI-powered SBAR training tool. Record your reports naturally and receive structured feedback.
+              Secure, accurate, and efficient documentation system designed for legal nursing records.
             </p>
             <div className="flex gap-4">
               <SignInButton mode="modal">

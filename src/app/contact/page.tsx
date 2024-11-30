@@ -1,14 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Caveat, Fredoka } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Mail, Send, CheckCircle2, AlertCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-const caveat = Caveat({ subsets: ['latin'] })
-const fredoka = Fredoka({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] })
 
 // Form validation schema
 const contactSchema = z.object({
@@ -60,16 +59,15 @@ export default function Contact() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-blue-50 to-teal-50 ${fredoka.className}`}>
+    <div className={`min-h-screen bg-slate-50 ${inter.className}`}>
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-12">
-            <h1 className={`text-4xl font-bold text-teal-700 mb-4 ${caveat.className}`}>
-              Get in Touch
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+              Contact Support
             </h1>
             <p className="text-gray-600">
-              Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
+              Need assistance with legal documentation? Our team is here to help.
             </p>
           </div>
 
@@ -173,10 +171,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-6 py-3 rounded-lg font-semibold text-white 
+                className={`w-full px-6 py-3 rounded-md font-semibold text-white 
                   ${isSubmitting 
                     ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600'
+                    : 'bg-blue-700 hover:bg-blue-800'
                   } transition-all duration-300 flex items-center justify-center gap-2`}
               >
                 {isSubmitting ? (
