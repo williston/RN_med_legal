@@ -50,21 +50,21 @@ export function TranscriptionDisplay({ transcription, onTranscriptionChange }: T
   }, []);
 
   return (
-    <div className="bg-blue-50 rounded-lg shadow-md p-6 mt-6 relative">
+    <div className="bg-white border border-gray-200 rounded-md shadow-sm p-6 mt-6 relative">
       <div className="relative">
         <div 
           className="flex items-center mb-4 hover:opacity-80 transition-opacity duration-200 w-fit"
           onMouseEnter={handleMouseEnter}
         >
-          <FileText className="w-6 h-6 text-teal-600 mr-2" />
-          <h2 className="text-2xl font-bold text-teal-700">Transcription</h2>
+          <FileText className="w-6 h-6 text-blue-700 mr-2" />
+          <h2 className="text-xl font-bold text-gray-900">Legal Documentation Record</h2>
         </div>
 
         {/* Popup */}
         {showPopup && (
           <div 
-            className={`absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg 
-              border-2 border-teal-500 w-80 z-50 transition-all duration-300 ease-in-out ${
+            className={`absolute top-full left-0 mt-2 bg-white rounded-md shadow-md 
+              border border-gray-200 w-80 z-50 transition-all duration-300 ease-in-out ${
                 isExiting 
                   ? 'opacity-0 transform -translate-y-2' 
                   : 'opacity-100 transform translate-y-0'
@@ -92,8 +92,8 @@ export function TranscriptionDisplay({ transcription, onTranscriptionChange }: T
       <Textarea
         value={transcription}
         onChange={(e) => onTranscriptionChange(e.target.value)}
-        className="w-full min-h-[12rem] p-4 border-4 border-white rounded-tl-2xl rounded-br-2xl font-serif text-lg text-gray-700 bg-white shadow-inner focus:ring-4 focus:ring-teal-300 focus:border-teal-500 transition-all duration-300 ease-in-out"
-        placeholder="Transcription will appear here..."
+        className="w-full min-h-[12rem] p-4 border border-gray-200 rounded-md font-sans text-base text-gray-900 bg-white shadow-sm focus:ring-2 focus:ring-blue-300 focus:border-blue-500 transition-all duration-300 ease-in-out"
+        placeholder="Enter or edit your documentation here..."
       />
       <div className="absolute bottom-3 right-3 text-sm text-gray-400">
         {transcription.length} characters

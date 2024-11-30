@@ -33,19 +33,19 @@ export function TemplateSelector({ onTemplateSelect }: TemplateSelectorProps) {
   }
 
   return (
-    <div className="bg-blue-50 rounded-lg shadow-md p-6 mt-6">
+    <div className="bg-white border border-gray-200 rounded-md shadow-sm p-6 mt-6">
       <div className="flex items-center mb-4">
-        <FileCheck className="w-6 h-6 text-teal-600 mr-2" />
-        <h2 className="text-2xl font-bold text-teal-700">Select Practice Scenario</h2>
+        <FileCheck className="w-6 h-6 text-blue-700 mr-2" />
+        <h2 className="text-xl font-bold text-gray-900">Select Documentation Template</h2>
       </div>
-      <p className="text-lg text-gray-600 mb-4">Please choose a template nursing form:</p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+      <p className="text-base text-gray-600 mb-4">Choose the appropriate legal documentation template:</p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {templates.map((template) => (
           <button
             key={template.id}
             onClick={() => handleTemplateSelect(template.id)}
-            className={`relative aspect-square bg-white rounded-tl-2xl rounded-br-2xl overflow-hidden focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-300 ease-in-out transform hover:scale-105 ${
-              selectedTemplate === template.id ? 'ring-4 ring-teal-500' : 'ring-4 ring-white'
+            className={`relative aspect-square bg-white rounded-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300 ease-in-out ${
+              selectedTemplate === template.id ? 'ring-2 ring-blue-500' : 'ring-1 ring-gray-200'
             }`}
             aria-label={`Select template ${template.name}`}
             aria-pressed={selectedTemplate === template.id}
@@ -60,16 +60,10 @@ export function TemplateSelector({ onTemplateSelect }: TemplateSelectorProps) {
               />
             </div>
             {selectedTemplate === template.id && (
-  template.id === 1 ? (
-    <div className="absolute inset-0 bg-teal-500 bg-opacity-50 flex items-center justify-center">
-      <FileCheck className="w-12 h-12 text-white" />
-    </div>
-  ) : (
-    <div className="absolute inset-0 bg-teal-500 text-white text-lg font-bold bg-opacity-50 flex items-center justify-center">
-      Coming soon
-    </div>
-  )
-)}
+              <div className="absolute inset-0 bg-blue-500 bg-opacity-20 flex items-center justify-center">
+                <FileCheck className="w-8 h-8 text-blue-700" />
+              </div>
+            )}
           </button>
         ))}
       </div>

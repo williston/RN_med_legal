@@ -164,20 +164,19 @@ const startRecording = useCallback(async () => {
 
   return (
     <div>
-      <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-        <h3 className="font-bold text-yellow-800">Important Notice</h3>
-        <p className="text-sm text-yellow-700">
-          This tool is for educational and training purposes only. 
-          DO NOT include any patient identifiers or protected health information:
-          • No names, ages, or dates of birth
-          • No room numbers or locations
-          • No specific medical record details
-          • No unique identifying characteristics
+      <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
+        <h3 className="font-bold text-red-800">Legal Documentation Notice</h3>
+        <p className="text-sm text-red-700">
+          This is a legal documentation tool. All recordings are considered part of the medical-legal record:
+          • Ensure accuracy and professionalism
+          • Follow HIPAA compliance guidelines
+          • Document only relevant clinical information
+          • Maintain patient privacy and confidentiality
         </p>
       </div>
-      <div className="flex flex-col items-center space-y-4 p-6 bg-blue-50 rounded-lg shadow-md">
+      <div className="flex flex-col items-center space-y-4 p-6 bg-white border border-gray-200 rounded-md shadow-sm">
         {isRecording && (
-          <div className="text-3xl font-bold text-teal-600" aria-live="polite">
+          <div className="text-3xl font-bold text-blue-700" aria-live="polite">
             {formatTime(timer)}
           </div>
         )}
@@ -185,13 +184,12 @@ const startRecording = useCallback(async () => {
           <button 
             onClick={toggleRecording}
             className={cn(
-              "w-16 h-16 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-offset-2",
+              "w-16 h-16 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2",
               isRecording 
-                ? "bg-red-500 hover:bg-red-600 focus:ring-red-300" 
-                : "bg-teal-500 hover:bg-teal-600 focus:ring-teal-300",
-              "transition-all duration-300 ease-in-out transform hover:scale-105",
-              "rounded-tl-2xl rounded-br-2xl shadow-lg",
-              "border-4 border-white"
+                ? "bg-red-600 hover:bg-red-700 focus:ring-red-300" 
+                : "bg-blue-700 hover:bg-blue-800 focus:ring-blue-300",
+              "transition-all duration-300 ease-in-out",
+              "rounded-md shadow-sm"
             )}
             aria-label={isRecording ? "Stop Recording" : "Start Recording"}
           >
@@ -201,19 +199,19 @@ const startRecording = useCallback(async () => {
               <Mic className="w-8 h-8 text-white" />
             )}
           </button>
-          <span className="text-lg font-medium text-teal-700">
-            {isRecording ? "End" : "Start"}
+          <span className="text-base font-medium text-gray-700">
+            {isRecording ? "End Recording" : "Start Recording"}
           </span>
 
           {isRecording && (
             <button 
               onClick={togglePause}
               className={cn(
-                "w-12 h-12 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-blue-300",
-                "bg-blue-400 hover:bg-blue-500",
-                "transition-all duration-300 ease-in-out transform hover:scale-105",
-                "rounded-full shadow-lg",
-                "border-4 border-white"
+                "w-12 h-12 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300",
+                "bg-gray-100 hover:bg-gray-200",
+                "transition-all duration-300 ease-in-out",
+                "rounded-md shadow-sm",
+                "border border-gray-300"
               )}
               disabled={!isRecording}
               aria-label={isPaused ? "Resume Recording" : "Pause Recording"}

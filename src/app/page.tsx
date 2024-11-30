@@ -9,11 +9,10 @@ import { VoiceRecorder } from '../components/VoiceRecorder'
 import { TranscriptionDisplay } from '@/components/TranscriptionDisplay'
 import { TemplateSelector } from '@/components/TemplateSelector'
 import { useUser } from '@clerk/nextjs'
-import { Caveat, Fredoka } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { toast } from 'react-hot-toast'
 
-const caveat = Caveat({ subsets: ['latin'] })
-const fredoka = Fredoka({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const { user } = useUser()
@@ -109,18 +108,18 @@ export default function Home() {
 
 
   return (
-    <div className={`min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-teal-50 ${fredoka.className}`}>
+    <div className={`min-h-screen flex flex-col bg-slate-50 ${inter.className}`}>
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
           {user && (
-            <h2 className={`text-3xl mb-4 text-teal-600 text-center ${caveat.className} animate-fade-in-down`}>
-              Hi, {user.firstName || user.username || 'there'}!
+            <h2 className="text-2xl mb-4 text-gray-700 text-center font-medium animate-fade-in-down">
+              Welcome, {user.firstName || user.username || 'User'}
             </h2>
           )}
-          <h1 className="text-4xl font-bold mb-8 text-teal-700 text-center animate-fade-in-up">SBAR Practice & Learning Tool</h1>
-          <p className="text-gray-600">
-            Practice structured clinical communication using simulated scenarios. 
-            Perfect your SBAR technique without using real patient information.
+          <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center animate-fade-in-up">Legal Documentation Assistant</h1>
+          <p className="text-gray-600 mb-8 text-center">
+            Secure and accurate documentation for legal nursing records. 
+            All entries are time-stamped and stored securely.
           </p>
           <div className="space-y-8">
             <VoiceRecorder 
@@ -137,9 +136,9 @@ export default function Home() {
             <div className="flex justify-center">
               <button 
                 onClick={handleAnalyzeTranscription}
-                className={`px-6 py-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 ${
+                className={`px-6 py-3 rounded-md flex items-center justify-center transition-all duration-300 ${
                   selectedTemplate === 1 && !isAnalyzing
-                    ? 'bg-gradient-to-r from-teal-400 to-blue-500 text-white hover:from-teal-500 hover:to-blue-600 focus:ring-teal-300' 
+                    ? 'bg-blue-700 text-white hover:bg-blue-800 focus:ring-blue-300' 
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
                 disabled={selectedTemplate !== 1 || isAnalyzing}
